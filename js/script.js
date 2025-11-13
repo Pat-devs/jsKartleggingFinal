@@ -1,42 +1,42 @@
-// let userName = "Patryk"
+// conditionals (betingelser)
 
-// let userAge = 12
-
-// let userWeight = 90.5
-
-// let userHobbies = ["coding", "walking", "eating"]
-
-// let userGreet = function() {
-//     console.log("Hi there!")
-// }
-
-// userGreet()
-
-
-// function greeting() {
-//     console.log("Hello everyone!")
-// }
-
-
-
-/* OBJECTS */
-
-let userDetails = {
-    name: "Patryk",
-    age: 11,
-    weight: 90.5,
-    hobbies: ["coding", "walking", "eating"],
-    greet: function() {
-        console.log("Hi")
-    }
+if (true) {
+    // this will happen if above statement is truthy 
+}
+else
+{
+    // this will happen if above statement is not truthy 
 }
 
-console.log(userDetails.age)
-console.log(userDetails.hobbies)
 
-userDetails.greet()
+// bit more complicated statements:
 
 
-console.log()
+// greeting based on time of day...
 
-document.querySelector()
+// mellom kl 05.00 - 11.00 = morning
+// mellom. 12.00 - 15.00 = afternoon
+// mellom 16.00 - 23.00 = evening
+// resten dvs. 24.00 - 04.00 = natt
+
+// time of day, in hours since midnight
+let hour = 6
+
+// logical AND statement is written by usings a double &, eks: &&
+// > means larger than
+// == means equal to
+// >= means larger OR equal to
+
+
+if (hour >= 5 && hour <= 11) { // should only run if hour is 5 or more AND 11 or less
+    console.log("good morning")
+}
+else if (hour >= 12 && hour <= 15) {
+    console.log("good afternoon")
+}
+else if (hour >= 16 && hour <= 23) {
+    console.log("good evening")
+}
+else {
+    console.log("Good night")
+}

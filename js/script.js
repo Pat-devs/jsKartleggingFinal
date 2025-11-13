@@ -1,10 +1,10 @@
 
 
 // en liten CRUD webapp
-// C - Create
-// R - Read
-// U - Update
-// D - Delete
+// C - Create (an entry)
+// R - Read (an entry)
+// U - Update (an entry)
+// D - Delete (an entry)
 
 // Gjøremålliste (eller Todolist)
 
@@ -16,14 +16,6 @@ function createTodo(todoitem) {
     todolist.push(todoitem)
 }
 
-// create a todo item
-createTodo("write some code") // 0
-
-createTodo("comment the written code") // 1 
-
-createTodo("break some code") // 2
-
-createTodo("fix some code") // 3
 
 
 
@@ -47,7 +39,10 @@ function deleteTodo() {
 
 }
 
-
+// deletes all todolist items
+function deleteAllTodos() {
+    todolist = []
+}
 
 
 
@@ -57,32 +52,58 @@ let todolistContainer = document.querySelector("#todolist-items")
 
 // writes the todolist to the page
 function renderTodolist() {
-    todolistContainer.innerHTML = `
-    <ul>`
-
-
-    todolistContainer.innerHTML += `<li>${todolist[0]}</li>`
-    todolistContainer.innerHTML += `<li>${todolist[1]}</li>`
-    todolistContainer.innerHTML += `<li>${todolist[2]}</li>`
-
-        // <li>${readTodo(0)}</li>
-    //     <li>${todolist[1]}</li>
-    //     <li>${todolist[2]}</li>
-    //     <li>${todolist[3]}</li>
-    //     <li>${todolist[4]}</li>
-    //     <li>${todolist[5]}</li>
-    // </ul>
+    // empty the todoListContainer
+    todolistContainer.innerHTML = ""
+    for (let index = 0; index < todolist.length; index = index + 1) {
+        //console.log(todolist[index])
+        todolistContainer.innerHTML += `<li>${todolist[index]}</li>`
+    }
+    
 }
 
 renderTodolist()
 
+// add todo input field, and button
+/* 
+<input type="text" name="" id="input-todo-text" placeholder="Enter your todo">
+<button id="button-add-todo">Add todo</button>
+*/
 
-// en for loop, trenger 3 ting:
-// 1. en iterator (eller en teller), som også er ofte kalt bare i eller index
-// 2. en condition, altså hvor lenge skal loopen kjøre
-// 3. en increment
-for (let counter = 0; counter < 5; counter = counter + 2) {
-    console.log("counter is now " + counter)
-    
-    if (counter > 10) break
+let inputTodoText = document.querySelector("#input-todo-text")
+
+let buttonAddTodo = document.querySelector("#button-add-todo")
+
+let buttonClearTodolist = document.querySelector("#button-clear-todolist")
+
+// add todo event handler function will do a few things
+// #1 read text from the input-todo-text input
+function handleAddTodoClick() {
+    // add the todo
+    createTodo(inputTodoText.value)
+    // clear the input field
+    inputTodoText.value = ""
+    renderTodolist()
 }
+
+buttonAddTodo.addEventListener("click", handleAddTodoClick)
+
+
+function handleClearTodolistClick() {
+    // remove all todos from the array
+    deleteAllTodos()
+    // render the todolist again
+    renderTodolist()
+}
+
+buttonClearTodolist.addEventListener("click", handleClearTodolistClick)
+
+
+
+
+
+
+
+function handleAddTodoEnterKey(event) {
+    //console.log(event)
+}
+inputTodoText.addEventListener("keydown", handleAddTodoEnterKey)

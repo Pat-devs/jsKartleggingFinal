@@ -1,4 +1,8 @@
+// localStorage info
+//localStorage.setItem("todolist", ["test", "eat", "relax"])
 
+
+// console.log(localStorage.getItem("todolist"))
 
 // en liten CRUD webapp
 // C - Create (an entry)

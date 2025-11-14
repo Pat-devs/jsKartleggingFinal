@@ -34,9 +34,9 @@ function readTodo(index) {
 
 }
 
-// deletes a todolist item
-function deleteTodo() {
-
+// deletes a todolist item at specific index
+function deleteTodo(index) {
+    todolist.splice(index,1)
 }
 
 // deletes all todolist items
@@ -44,18 +44,23 @@ function deleteAllTodos() {
     todolist = []
 }
 
-
-
 // get the todolist item tag from the webpage and store it in a variable
 let todolistContainer = document.querySelector("#todolist-items")
 
 // delele todo-item event handler
 function handleDeleteTodo(eventInfo) {
     // delete the todoitem from the array (call to the "backend function")
+    
+    let myString = eventInfo.target.id
 
+    // to extract the index number from the id (todo-item-x), we need first find the last - and then use the substring method, to get it.
+    let startOfNumber = myString.lastIndexOf("-") + 1 // index of first character in the string matching the condition
+
+    let index = myString.substring(startOfNumber)
+
+    deleteTodo(index)
     // delete the todoitem from the web page
-    console.log("trying to delete a todo :)")
-    console.log(eventInfo.target)
+    eventInfo.target.remove()
 }
 
 // writes the todolist to the page
